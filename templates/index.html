@@ -1,0 +1,243 @@
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ info.name }} | Data Analyst Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="bg-gray-950 text-gray-200 min-h-screen font-sans leading-relaxed">
+    <div class="absolute top-0 left-0 w-full h-full bg-grid-gray-700/[0.2] z-0"></div>
+    <div class="relative z-10">
+
+        <!-- Header -->
+        <header class="sticky top-0 z-50 transition-all duration-300 bg-transparent" id="main-header">
+            <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
+                    <a href="#" class="text-2xl font-bold text-white tracking-wider">
+                        <span class="text-blue-400">A</span>B
+                    </a>
+                    <div class="hidden md:flex items-center space-x-2" id="desktop-menu">
+                        <a href="#about" class="px-4 py-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-700 transition-colors duration-300">About</a>
+                        <a href="#skills" class="px-4 py-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-700 transition-colors duration-300">Skills</a>
+                        <a href="#experience" class="px-4 py-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-700 transition-colors duration-300">Experience</a>
+                        <a href="#projects" class="px-4 py-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-700 transition-colors duration-300">Projects</a>
+                        <a href="#contact" class="px-4 py-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-700 transition-colors duration-300">Contact</a>
+                    </div>
+                    <div class="md:hidden">
+                        <button id="mobile-menu-button" class="text-gray-300 hover:text-white focus:outline-none">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="hidden md:hidden pb-4 flex-col items-center" id="mobile-menu">
+                    <a href="#about" class="block w-full text-center px-4 py-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-700 transition-colors duration-300">About</a>
+                    <a href="#skills" class="block w-full text-center px-4 py-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-700 transition-colors duration-300">Skills</a>
+                    <a href="#experience" class="block w-full text-center px-4 py-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-700 transition-colors duration-300">Experience</a>
+                    <a href="#projects" class="block w-full text-center px-4 py-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-700 transition-colors duration-300">Projects</a>
+                    <a href="#contact" class="block w-full text-center px-4 py-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-700 transition-colors duration-300">Contact</a>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <!-- Hero Section -->
+            <section id="home" class="min-h-screen flex items-center justify-center py-20 relative overflow-hidden">
+                <div class="absolute inset-0 -z-10 h-full w-full bg-gray-950 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:32px_32px]"></div>
+                <div class="container mx-auto px-4 flex flex-col-reverse lg:flex-row items-center justify-between gap-12">
+                    <div class="text-center lg:text-left lg:w-1/2">
+                        <h1 class="text-4xl md:text-6xl font-black text-white leading-tight mb-4">
+                            Hi, I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">{{ info.name }}</span>
+                        </h1>
+                        <h2 class="text-2xl md:text-3xl font-semibold text-gray-300 mb-6">{{ info.title }}</h2>
+                        <p class="text-gray-400 max-w-xl mx-auto lg:mx-0 mb-8">{{ info.summary.split('. Proficient')[0] }}.</p>
+                        <div class="flex items-center justify-center lg:justify-start space-x-4 mb-8">
+                            <a href="{{ info.contact.github }}" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors p-2">{{ icons.github | safe }}</a>
+                            <a href="{{ info.contact.linkedin }}" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors p-2">{{ icons.linkedin | safe }}</a>
+                            <a href="mailto:{{ info.contact.email }}" class="text-gray-400 hover:text-white transition-colors p-2">{{ icons.email | safe }}</a>
+                        </div>
+                        <a href="#contact" class="bg-blue-600 text-white font-bold py-3 px-8 rounded-full hover:bg-blue-700 transition-transform duration-300 ease-in-out transform hover:scale-105 inline-block">
+                            Get In Touch
+                        </a>
+                    </div>
+                    <div class="lg:w-1/2 flex items-center justify-center">
+                        <div class="cube-container">
+                            <div class="cube">
+                                <div class="face front">{{ icons.python | safe }}</div>
+                                <div class="face back">{{ icons.sql | safe }}</div>
+                                <div class="face right">{{ icons.tableau | safe }}</div>
+                                <div class="face left">{{ icons.aws | safe }}</div>
+                                <div class="face top">{{ icons.brain | safe }}</div>
+                                <div class="face bottom">{{ icons.github | safe }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Section -->
+            <section id="about" class="py-20 md:py-28">
+                <div class="container mx-auto px-4">
+                    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 md:mb-16 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
+                        About Me
+                    </h2>
+                    <p class="max-w-3xl mx-auto text-center text-gray-400 text-lg">
+                       {{ info.summary }}
+                    </p>
+                </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section id="skills" class="py-20 md:py-28 bg-gray-900">
+                <div class="container mx-auto px-4">
+                    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 md:mb-16 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
+                        Technical Skills
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {% for category, skill_list in skills.items() %}
+                        <div class="bg-gray-800/50 rounded-lg p-6 border border-gray-700 transition-all duration-300 hover:border-blue-500 hover:shadow-2xl hover:shadow-blue-500/10">
+                            <h3 class="text-xl font-semibold text-white mb-4">{{ category }}</h3>
+                            <div class="flex flex-wrap gap-2">
+                                {% for skill in skill_list %}
+                                <span class="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full">
+                                    {{ skill }}
+                                </span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+
+            <!-- Experience Section -->
+            <section id="experience" class="py-20 md:py-28">
+                <div class="container mx-auto px-4">
+                    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 md:mb-16 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
+                        Work Experience & Internships
+                    </h2>
+
+                    <!-- Desktop Timeline -->
+                    <div class="hidden md:block relative wrap overflow-hidden p-10 h-full timeline">
+                        {% for item in experiences %}
+                        <div class="mb-8 flex justify-between items-center w-full {% if loop.index0 % 2 == 0 %}flex-row-reverse{% endif %}">
+                            <div class="order-1 w-5/12"></div>
+                            <div class="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full"></div>
+                            <div class="order-1 bg-gray-800/50 rounded-lg shadow-xl w-full md:w-5/12 p-6 border border-gray-700 transition-all duration-300 hover:border-purple-500 hover:shadow-2xl hover:shadow-purple-500/10 {% if loop.index0 % 2 == 0 %}md:text-right{% else %}md:text-left{% endif %}">
+                                <p class="mb-1 text-sm text-blue-400 font-semibold">{{ item.period }}</p>
+                                <h3 class="mb-2 font-bold text-white text-xl">{{ item.role }}</h3>
+                                <p class="text-sm font-medium text-gray-400 mb-4">{{ item.company }} | {{ item.location }}</p>
+                                <ul class="list-disc list-inside text-gray-400 space-y-2 text-sm text-left">
+                                    {% for point in item.description %}
+                                    <li>{{ point }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    <!-- Mobile Timeline -->
+                     <div class="md:hidden">
+                        {% for item in experiences %}
+                        <div class="mb-8 pl-8 relative border-l-2 border-gray-700">
+                            <div class="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full absolute -left-4 top-0"></div>
+                             <div class="bg-gray-800/50 rounded-lg p-6 border border-gray-700">
+                                <p class="mb-1 text-sm text-blue-400 font-semibold">{{ item.period }}</p>
+                                <h3 class="mb-2 font-bold text-white text-xl">{{ item.role }}</h3>
+                                <p class="text-sm font-medium text-gray-400 mb-4">{{ item.company }} | {{ item.location }}</p>
+                                <ul class="list-disc list-inside text-gray-400 space-y-2 text-sm">
+                                    {% for point in item.description %}
+                                    <li>{{ point }}</li>
+                                    {% endfor %}
+                                </ul>
+                             </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="projects" class="py-20 md:py-28 bg-gray-900">
+                <div class="container mx-auto px-4">
+                    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 md:mb-16 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
+                        Projects
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {% for project in projects %}
+                        <div class="bg-gray-800/50 rounded-lg overflow-hidden border border-gray-700 flex flex-col group transition-all duration-300 hover:border-blue-500 hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-2">
+                           <div class="relative h-48 w-full overflow-hidden">
+                             <img src="{{ project.imageUrl }}" alt="{{ project.title }}" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" />
+                           </div>
+                           <div class="p-6 flex flex-col flex-grow">
+                                <h3 class="text-xl font-bold text-white mb-2">{{ project.title }}</h3>
+                                <ul class="list-disc list-inside text-gray-400 space-y-1 text-sm mb-4 flex-grow">
+                                    {% for point in project.description %}
+                                    <li>{{ point }}</li>
+                                    {% endfor %}
+                                </ul>
+                                <div class="flex flex-wrap gap-2 mt-auto mb-4">
+                                    {% for tag in project.tags %}
+                                    <span class="text-xs font-semibold bg-blue-900/50 text-blue-300 px-2 py-1 rounded">
+                                        {{ tag }}
+                                    </span>
+                                    {% endfor %}
+                                </div>
+                                <a href="{{ project.githubUrl }}" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 transition-colors self-start flex items-center gap-2">
+                                    View on GitHub <div class="w-5 h-5">{{ icons.github | safe }}</div>
+                                </a>
+                           </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="py-20 md:py-28">
+                <div class="container mx-auto px-4 text-center">
+                     <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
+                        Get In Touch
+                    </h2>
+                    <p class="max-w-2xl mx-auto text-gray-400 mb-12">
+                        I'm currently seeking new opportunities and would love to hear from you. Whether you have a question or just want to say hi, feel free to reach out!
+                    </p>
+
+                    <div class="flex flex-wrap justify-center items-center gap-8 mb-12">
+                        <a href="mailto:{{ info.contact.email }}" class="flex items-center gap-3 text-lg text-gray-300 hover:text-blue-400 transition-colors">
+                            {{ icons.email | safe }}
+                            <span>{{ info.contact.email }}</span>
+                        </a>
+                        <a href="{{ info.contact.linkedin }}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 text-lg text-gray-300 hover:text-blue-400 transition-colors">
+                            {{ icons.linkedin | safe }}
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="{{ info.contact.github }}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 text-lg text-gray-300 hover:text-blue-400 transition-colors">
+                            {{ icons.github | safe }}
+                            <span>GitHub</span>
+                        </a>
+                    </div>
+
+                    <a href="mailto:{{ info.contact.email }}" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold py-4 px-10 rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 ease-in-out transform hover:scale-105 inline-block text-lg">
+                        Say Hello
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="text-center py-8 text-gray-500 border-t border-gray-800">
+            <p>&copy; 2024 {{ info.name }}. All Rights Reserved.</p>
+        </footer>
+    </div>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
